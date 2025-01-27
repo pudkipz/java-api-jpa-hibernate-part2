@@ -1,5 +1,6 @@
 package com.booleanuk.api.books;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("books")
+@RequestMapping("/books")
 public class BookController {
     private BookRepository bookRepository;
 
@@ -16,7 +17,7 @@ public class BookController {
     }
 
     @GetMapping
-    public List<Book> getAll() {
-        return bookRepository.findAll();
+    public ResponseEntity<List<Book>> getAll() {
+        return ResponseEntity.ok(bookRepository.findAll());
     }
 }

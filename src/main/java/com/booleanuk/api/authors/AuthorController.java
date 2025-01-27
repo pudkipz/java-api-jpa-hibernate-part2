@@ -1,5 +1,6 @@
 package com.booleanuk.api.authors;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("authors")
+@RequestMapping("/authors")
 public class AuthorController {
     private AuthorRepository authorRepository;
 
@@ -16,7 +17,9 @@ public class AuthorController {
     }
 
     @GetMapping
-    public List<Author> getAll() {
-        return authorRepository.findAll();
+    public ResponseEntity<List<Author>> getAll() {
+        return ResponseEntity.ok(authorRepository.findAll());
     }
+
+
 }

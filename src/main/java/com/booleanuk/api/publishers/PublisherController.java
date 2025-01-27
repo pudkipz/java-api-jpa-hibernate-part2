@@ -1,5 +1,6 @@
 package com.booleanuk.api.publishers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("publishers")
+@RequestMapping("/publishers")
 public class PublisherController {
     private PublisherRepository publisherRepository;
 
@@ -16,7 +17,7 @@ public class PublisherController {
     }
 
     @GetMapping
-    public List<Publisher> getAll() {
-        return publisherRepository.findAll();
+    public ResponseEntity<List<Publisher>> getAll() {
+        return ResponseEntity.ok(publisherRepository.findAll());
     }
 }
