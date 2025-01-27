@@ -1,6 +1,7 @@
 package com.booleanuk.api.publishers;
 
 import com.booleanuk.api.books.Book;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,7 +16,8 @@ public class Publisher {
     @Column String name;
     @Column String location;
 
-    @OneToMany
+    @OneToMany(mappedBy = "publisher")
+    @JsonIncludeProperties({"title", "genre", "author"})
     private List<Book> books;
 
     public Publisher(int id, String name, String location) {

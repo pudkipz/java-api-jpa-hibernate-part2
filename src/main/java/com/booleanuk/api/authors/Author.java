@@ -1,6 +1,7 @@
 package com.booleanuk.api.authors;
 
 import com.booleanuk.api.books.Book;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class Author {
     @Column private boolean alive;
 
     @OneToMany(mappedBy = "author")
+    @JsonIncludeProperties({"title", "genre", "publisher"})
     private List<Book> books;
 
     public Author(int id, String firstName, String lastName, String email, boolean alive) {

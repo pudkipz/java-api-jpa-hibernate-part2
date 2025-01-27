@@ -2,6 +2,7 @@ package com.booleanuk.api.books;
 
 import com.booleanuk.api.authors.Author;
 import com.booleanuk.api.publishers.Publisher;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,9 +16,11 @@ public class Book {
     @Column String genre;
 
     @ManyToOne
+    @JsonIncludeProperties({"firstName", "lastName", "email", "alive"})
     private Author author;
 
     @ManyToOne
+    @JsonIncludeProperties({"name", "location"})
     private Publisher publisher;
 
     public Book(int id, String title, String genre, Author author) {
