@@ -16,11 +16,11 @@ public class Book {
     @Column String genre;
 
     @ManyToOne
-    @JsonIncludeProperties({"firstName", "lastName", "email", "alive"})
+    @JsonIncludeProperties({"id", "firstName", "lastName", "email", "alive"})
     private Author author;
 
     @ManyToOne
-    @JsonIncludeProperties({"name", "location"})
+    @JsonIncludeProperties({"id", "name", "location"})
     private Publisher publisher;
 
     public Book(int id, String title, String genre, Author author) {
@@ -81,5 +81,13 @@ public class Book {
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+    }
+
+    public int getAuthorId() {
+        return author.getId();
+    }
+
+    public int getPublisherId() {
+        return publisher.getId();
     }
 }

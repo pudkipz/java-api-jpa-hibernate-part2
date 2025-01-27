@@ -37,6 +37,10 @@ public class Author {
         this.alive = alive;
     }
 
+    public Author(int id) {
+        this.id = id;
+    }
+
     public Author() {
     }
 
